@@ -41,3 +41,11 @@ document.querySelectorAll('.typewriter').forEach((el, idx) => {
   const t = el.getAttribute('data-text') || el.textContent;
   typeIt(el, t, 45, 200 + idx * 1800); // each line starts later
 });
+// Fade-in the profile image after the text has typed
+const profileImg = document.querySelector('.hero__image img');
+if (profileImg) {
+  // wait until the last typewriter finishes (~200 + 1800*2 ms)
+  setTimeout(() => {
+    profileImg.classList.add('visible');
+  }, 200 + 1800 * 3); // adjust if you tweak typing delays
+}
