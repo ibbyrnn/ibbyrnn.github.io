@@ -48,3 +48,16 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial
 .reveal-visible { opacity: 1; transform: translateY(0); transition: all .6s ease; }
 .float { animation: float 6s ease-in-out infinite; }
 @keyframes float { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-6px) } }
+.hero__image {
+  display: flex;
+  justify-content: center;
+}
+
+.hero__image img {
+  width: 280px;      /* change to 220px, 250px, etc. if you want smaller/larger */
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%; /* makes it circular */
+  border: 4px solid var(--border);
+  box-shadow: var(--shadow);
+}
