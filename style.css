@@ -107,5 +107,16 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial
 .typewriter {
   animation: caret-blink 1s steps(1) infinite;
 }
+/* Fade-in animation for profile image */
+.hero__image img {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.hero__image img.visible {
+  opacity: 1;
+  transform: scale(1);
+}
 
 
