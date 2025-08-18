@@ -25,7 +25,9 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // ---- Typewriter (caret via CSS .typing pseudo-element) ----
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduceMotion =
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+  window.matchMedia('(max-width: 900px)').matches;
 
 function typeIt(el, text, speed = 45, delay = 200) {
   if (reduceMotion) { el.textContent = text; return; }
