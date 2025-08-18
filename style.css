@@ -91,41 +91,64 @@ body {
 .float { animation: float 6s ease-in-out infinite; }
 @keyframes float { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-6px) } }
 
-/* Hero image (size + fade-in) */
-.hero__image { display: flex; justify-content: center; }
+/* Stable hero layout (no movement while typing) */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
+
+  /* key: give the row a fixed floor height so it won't re-center */
+  min-height: 360px;        /* adjust 320–420px to taste */
+  align-items: stretch;     /* both columns stretch to same height */
+}
+
+/* Left column: vertically center the 3 lines inside a fixed-height box */
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 240px;        /* reserves space for “Hello…”, Name, Tagline */
+}
+
+/* Right column: keep image perfectly centered in its cell */
+.hero__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image size + fade (no scale → zero nudge) */
 .hero__image img {
-  width: 280px; height: 280px; object-fit: cover; border-radius: 50%;
-  border: 4px solid var(--border); box-shadow: var(--shadow);
-  opacity: 0; transition: opacity 1s ease;
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--border);
+  box-shadow: var(--shadow);
+  opacity: 0;                     /* fade only */
+  transition: opacity 1s ease;    /* no transform → no layout shift */
 }
 .hero__image img.visible { opacity: 1; }
 
-/* Typewriter caret (no layout shift) */
-.typewriter { position: relative; white-space: nowrap; overflow: hidden; min-height: 1.4em; }
+/* Typewriter caret that doesn't affect layout (keep this version) */
+.typewriter {
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  min-height: 1.4em;
+}
 .typewriter::after {
-  content: ''; position: absolute; right: -2px; top: 0.15em;
-  width: 2px; height: 1.1em; background: var(--accent); opacity: 0;
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: 0.15em;
+  width: 2px; height: 1.1em;
+  background: var(--accent);
+  opacity: 0;
 }
 .typing::after { opacity: 1; animation: caret-blink 1s steps(1) infinite; }
 @keyframes caret-blink { 50% { opacity: 0; } }
-/* Keep hero row from re-centering the photo while text grows */
-.hero { 
-  align-items: start;           /* top-align the two columns */
-}
 
-/* Pin the image to the top of its column */
-.hero__image { 
-  align-self: start; 
-}
-
-/* Reserve enough vertical space for the three typed lines */
-.hero__content { 
-  min-height: 180px;            /* tweak 160–220px to fit your font sizes */
-}
-
-/* (Already using fade-only) — no scale to avoid any perceived nudge */
-.hero__image img {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-.hero__image img.visible { opacity: 1; }
