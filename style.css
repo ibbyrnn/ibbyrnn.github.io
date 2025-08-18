@@ -67,7 +67,7 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial
 }
 
 .card.project:hover {
-  transform: scale(1.2); /* slightly bigger on hover */
+  transform: scale(1.8); /* slightly bigger on hover */
   box-shadow: 0 12px 30px rgba(31, 37, 68, 0.15); /* deeper shadow */
 }
 
