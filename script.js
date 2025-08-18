@@ -36,11 +36,30 @@ function typeIt(el, text, speed = 45, delay = 200) {
   }, delay);
 }
 
-// Sequential typing for all .typewriter elements
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function typeIt(el, text, speed = 45, delay = 200) {
+  if (reduceMotion) { el.textContent = text; return; }
+  el.textContent = '';
+  el.classList.add('typing');          // show caret
+  let i = 0;
+  setTimeout(() => {
+    const timer = setInterval(() => {
+      el.textContent += text.charAt(i++);
+      if (i > text.length) {
+        clearInterval(timer);
+        el.classList.remove('typing'); // hide caret when done
+      }
+    }, speed);
+  }, delay);
+}
+
+// Apply sequentially
 document.querySelectorAll('.typewriter').forEach((el, idx) => {
   const t = el.getAttribute('data-text') || el.textContent;
-  typeIt(el, t, 45, 200 + idx * 1800); // each line starts later
+  typeIt(el, t, 45, 200 + idx * 1800);
 });
+
 // Fade-in the profile image after the text has typed
 const profileImg = document.querySelector('.hero__image img');
 if (profileImg) {
