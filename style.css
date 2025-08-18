@@ -61,3 +61,13 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial
   border: 4px solid var(--border);
   box-shadow: var(--shadow);
 }
+/* Hover grow effect for project cards */
+.card.project {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.project:hover {
+  transform: scale(1.05); /* slightly bigger on hover */
+  box-shadow: 0 12px 30px rgba(31, 37, 68, 0.15); /* deeper shadow */
+}
+
