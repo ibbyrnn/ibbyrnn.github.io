@@ -118,5 +118,31 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial
   opacity: 1;
   transform: scale(1);
 }
+/* Typewriter caret that doesn't shift layout */
+.typewriter {
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  min-height: 1.4em;
+}
+
+/* caret is only visible when .typing is present */
+.typewriter::after {
+  content: '';
+  position: absolute;
+  right: -2px;        /* keeps caret just after the text */
+  top: 0.15em;
+  width: 2px;
+  height: 1.1em;
+  background: var(--accent);
+  opacity: 0;
+}
+
+.typing::after {
+  opacity: 1;
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@keyframes caret-blink { 50% { opacity: 0; } }
 
 
