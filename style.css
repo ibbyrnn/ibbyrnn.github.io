@@ -76,5 +76,14 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial
   box-shadow: 0 16px 40px rgba(31, 37, 68, 0.25); /* stronger shadow */
   z-index: 5; /* sit above neighbours */
 }
+/* Hover effect for buttons */
+.btn {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.05); /* slight lift + grow */
+  box-shadow: 0 8px 20px rgba(31, 37, 68, 0.2);
+}
 
 
