@@ -53,3 +53,7 @@
   }
   .topnav nav a { margin-left: 12px; }
 }
+@media (max-width: 900px) {
+  /* no caret on mobile */
+  .typewriter::after { display: none; }
+}
