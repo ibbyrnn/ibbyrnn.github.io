@@ -108,3 +108,24 @@ body {
 }
 .typing::after { opacity: 1; animation: caret-blink 1s steps(1) infinite; }
 @keyframes caret-blink { 50% { opacity: 0; } }
+/* Keep hero row from re-centering the photo while text grows */
+.hero { 
+  align-items: start;           /* top-align the two columns */
+}
+
+/* Pin the image to the top of its column */
+.hero__image { 
+  align-self: start; 
+}
+
+/* Reserve enough vertical space for the three typed lines */
+.hero__content { 
+  min-height: 180px;            /* tweak 160–220px to fit your font sizes */
+}
+
+/* (Already using fade-only) — no scale to avoid any perceived nudge */
+.hero__image img {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.hero__image img.visible { opacity: 1; }
