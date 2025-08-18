@@ -1,0 +1,7 @@
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; padding-top: 48px; }
+  .hero__image { order: -1; display: flex; justify-content: center; }
+  .hero__image img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 2px solid #e1e6ff; }
+  .cards.two { grid-template-columns: 1fr; }
+  .cards.three { grid-template-columns: 1fr; }
+}
