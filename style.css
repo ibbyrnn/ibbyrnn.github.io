@@ -145,9 +145,3 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
-
-/* Ensure sections don’t stretch beyond screen */
-.section, .topnav, .hero, .cards, .contact, .footer {
-  max-width: 100%;
-  box-sizing: border-box;
-}
