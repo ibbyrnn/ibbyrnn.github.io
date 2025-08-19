@@ -128,3 +128,14 @@ body {
 
 .typing::after { opacity: 1; animation: caret-blink 1s steps(1) infinite; }
 @keyframes caret-blink { 50% { opacity: 0; } }
+/* Hide typewriter text until JS starts typing (prevents flash) */
+.typewriter { visibility: hidden; }
+.typing, .typed { visibility: visible; }
+
+/* Mobile overflow guard */
+@media (max-width: 900px) {
+  html, body { width: 100%; overflow-x: hidden; }
+  img, video { max-width: 100%; height: auto; }
+  .topnav { width: 100%; box-sizing: border-box; }
+  .topnav nav { flex-wrap: wrap; }
+}
