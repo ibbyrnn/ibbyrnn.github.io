@@ -62,7 +62,7 @@ function typewriterSequence(){
   const tHello = getText(hello,  "👋 Hello, I'm");
   const tName  = getText(nameEl, "Muhammad Ibrahim Mirza");
   const tTag1  = getText(tag1,   "CS undergrad @ APU · Python · Java · C · R · MySQL");
-  const tTag2  = getText(tag2,   "Interested in software engineering, algorithms & optimisation");
+  const tTag2  = getText(tag2,   "Interested in software engineering, & optimisation");
 
   if(reduceMotion){
     if(hello){ hello.textContent=tHello; hello.classList.add('typed'); }
