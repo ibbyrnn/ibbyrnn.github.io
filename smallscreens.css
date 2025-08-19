@@ -1,58 +1,47 @@
 /* Phones & small tablets */
-@media (max-width: 900px) {
+@media (max-width: 900px){
+  /* Kill horizontal overflow + respect notches */
+  html,body{
+    width:100%;max-width:100%;overflow-x:hidden;
+    -webkit-text-size-adjust:100%;
+    -webkit-overflow-scrolling:touch;
+  }
+
   /* Header stacks neatly */
-  .topnav {
-    padding: 10px 14px;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
+  .topnav{
+    padding:10px 14px;
+    flex-direction:column;align-items:center;gap:6px;
+    width:100%;box-sizing:border-box;
   }
-  .topnav .brand a {
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 1.1;
-    text-align: center;
-  }
-  .topnav nav { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-  .topnav nav a { margin-left: 0; font-size: 14px; }
+  .topnav .brand a{font-weight:700;font-size:16px;line-height:1.1;text-align:center}
+  .topnav nav{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;max-width:100%}
+  .topnav nav a{margin-left:0;font-size:14px}
 
   /* Hero: stack; photo first; center everything */
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 40px 16px 28px;
+  .hero{
+    display:grid;grid-template-columns:1fr;gap:16px;
+    padding:40px 16px 28px;margin:0 auto;width:100%;max-width:100%;box-sizing:border-box
   }
-  .hero__image { order: -1; display: flex; justify-content: center; }
-  .hero__image img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;     /* keep perfect circle (no oval) */
-    border-width: 2px;
-    max-width: 100%;
+  .hero__image{order:-1;display:flex;justify-content:center}
+  .hero__image img{
+    width:120px;height:120px;max-width:100%;object-fit:cover;border-radius:50%;border-width:2px
   }
 
-  .hero__content { text-align: center; }
-  .hero__content .wave { margin-bottom: 6px; }
-  .hero__content h1 {
-    font-size: 30px;
-    line-height: 1.15;
-    margin: 0 0 8px;
-  }
-  .tagline {
-    font-size: 14px;
-    line-height: 1.35;
-    margin-bottom: 8px;
-  }
+  .hero__content{text-align:center}
+  .hero__content .wave{margin-bottom:6px}
+  .hero__content h1{font-size:30px;line-height:1.15;margin:0 0 8px}
+  .tagline{font-size:14px;line-height:1.35;margin-bottom:8px}
 
-  .cta { justify-content: center; flex-wrap: wrap; gap: 10px; }
+  .cta{justify-content:center;flex-wrap:wrap;gap:10px}
 
-  /* Cards go single column and shrink padding */
-  .cards.two, .cards.three { grid-template-columns: 1fr; }
-  .section { padding: 28px 16px; }
+  /* Cards single column + lighter padding */
+  .cards.two,.cards.three{grid-template-columns:1fr}
+  .section{padding:28px 16px}
 
-  /* Hard guard against horizontal bounce/scroll */
-  html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
-  img, video { max-width: 100%; height: auto; }
-  .topnav, .section, .hero, .cards, .contact, .footer { max-width: 100%; box-sizing: border-box; }
+  /* Make sure big wrappers never exceed the viewport */
+  .topnav,.hero,.section,.footer{max-width:100%;box-sizing:border-box}
+  img,video{max-width:100%;height:auto}
+
+  /* Caret hidden on mobile (no typing animation) */
+  .typewriter::after{display:none}
 }
