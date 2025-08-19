@@ -45,3 +45,46 @@
   /* Caret hidden on mobile (no typing animation) */
   .typewriter::after{display:none}
 }
+/* --- iOS Safari overflow + wrap fixes (add at the END) --- */
+@media (max-width: 900px) {
+  /* 1) Allow the typed lines to wrap on small screens */
+  .typewriter { 
+    white-space: normal;              /* was nowrap on desktop */
+  }
+  .hero__content h1 {
+    overflow-wrap: anywhere;          /* force wrap if needed */
+    word-break: break-word;
+    -webkit-hyphens: auto;
+            hyphens: auto;
+  }
+  .tagline {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* 2) Kill any horizontal spill and respect the notch */
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+  .topnav, .hero, .section, .footer {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  /* 3) Brand text can wrap; never push layout wider */
+  .topnav .brand a { 
+    white-space: normal; 
+    overflow-wrap: anywhere; 
+  }
+
+  /* 4) Images never exceed viewport */
+  img, video { max-width: 100%; height: auto; }
+  .hero__image img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; }
+}
