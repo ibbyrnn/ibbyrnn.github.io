@@ -88,3 +88,50 @@
   img, video { max-width: 100%; height: auto; }
   .hero__image img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; }
 }
+@media (max-width: 900px) {
+  /* 1) Prevent sideways panning / bounce */
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+    touch-action: pan-y;
+    -webkit-text-size-adjust: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 2) Let long lines wrap (desktop typewriter uses nowrap) */
+  .typewriter { white-space: normal; }
+  .hero__content h1,
+  .tagline,
+  .topnav .brand a { 
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
+  }
+
+  /* 3) Use lvh locally (hero fills screen nicely but page still scrolls) */
+  .hero {
+    min-height: 90lvh;   /* fills most of the viewport height without forcing body to 100lvh */
+  }
+
+  /* 4) Make sure big wrappers never exceed viewport width */
+  .topnav, .hero, .section, .footer {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  /* 5) Images never push wider */
+  img, video { max-width: 100%; height: auto; }
+  .hero__image img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; }
+
+  /* 6) Disable hover grow on mobile to avoid accidental overflow */
+  .card.project:hover { transform: none; box-shadow: var(--shadow); }
+}
+
+/* Optional, global (safe): border-box reset */
+:root { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
