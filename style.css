@@ -145,3 +145,5 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+#tag1 { margin-bottom: 4px; }
+#tag2 { margin-top: 0; }
