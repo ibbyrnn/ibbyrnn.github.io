@@ -2,13 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Muhammad Ibrahim Mirza | Portfolio</title>
   <meta name="description" content="Portfolio of Muhammad Ibrahim Mirza — Computer Science student and developer." />
-  <link rel="stylesheet" href="style.css?v=11">
-  <link rel="stylesheet" href="smallscreens.css?v=11" media="(max-width: 900px)">
-  <script src="script.js?v=11" defer></script>
-
+  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="smallscreens.css?v=12" media="(max-width: 900px)">
 </head>
 <body>
   <header class="topnav reveal">
@@ -22,35 +20,37 @@
   </header>
 
   <main>
+    <!-- Hero -->
     <section id="hero" class="hero reveal">
       <div class="hero__content">
-     <p id="hello" class="wave typewriter" data-text="👋 Hello, I'm"></p>
-        
-    <h1 id="name" class="typewriter" data-text="Muhammad Ibrahim Mirza">Muhammad Ibrahim Mirza</h1>
-        
-    <p id="tag1" class="tagline typewriter"
-       data-text="CS undergrad @ APU · Python · Java · C · R · MySQL"></p>
-        
-    <p id="tag2" class="tagline typewriter"
-       data-text="Interested in software engineering, algorithms & optimisation"></p>
+        <p id="hello" class="wave typewriter" data-text="👋 Hello, I'm"></p>
 
+        <h1 id="name" class="typewriter"
+            data-text="Muhammad Ibrahim Mirza">Muhammad Ibrahim Mirza</h1>
 
+        <p id="tag1" class="tagline typewriter"
+           data-text="CS undergrad @ APU · Python · Java · C · R · MySQL"></p>
+
+        <p id="tag2" class="tagline typewriter"
+           data-text="Interested in software engineering, algorithms & optimisation"></p>
 
         <div class="cta">
           <a class="btn" href="assets/Muhammad-Ibrahim-Mirza-CV.pdf" target="_blank" rel="noopener">CV</a>
           <a class="btn btn--secondary" href="#contact">Contact Info</a>
         </div>
       </div>
+
       <div class="hero__image" aria-hidden="true">
-        <img src="assets/images/profile.jpg" alt="Photo of Muhammad Ibrahim Mirza" />
+        <img src="assets/images/profile.jpg" alt="Photo of Muhammad Ibrahim Mirza">
       </div>
     </section>
 
+    <!-- About -->
     <section id="about" class="section alt reveal">
       <h2>About Me</h2>
       <div class="cards two">
         <article class="card float">
-          <img class="icon" src="assets/icons/experience.svg" alt="" />
+          <img class="icon" src="assets/icons/experience.svg" alt="">
           <h3>Experience</h3>
           <ul>
             <li><strong>IT Intern @ IREP (International Real Estate Partners)</strong> (Remote) — Supporting IT systems and infrastructure (2025–present)</li>
@@ -59,7 +59,7 @@
           </ul>
         </article>
         <article class="card float">
-          <img class="icon" src="assets/icons/education.svg" alt="" />
+          <img class="icon" src="assets/icons/education.svg" alt="">
           <h3>Education</h3>
           <p><strong>Bachelor's in Computer Science</strong> — Asia Pacific University (2023–present), Kuala Lumpur</p>
           <p><strong>Foundation in Engineering</strong> — Asia Pacific University (2022–2023), Kuala Lumpur</p>
@@ -70,41 +70,41 @@
       </p>
     </section>
 
+    <!-- Skills -->
     <section id="skills" class="section reveal">
       <h2>Skills</h2>
       <div class="skills-grid">
-        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt=""/>Python</div>
-        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt=""/>Java</div>
-        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt=""/>C</div>
-        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt=""/>R-Script</div>
-        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt=""/>MySQL</div>
-        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt=""/>C++</div>
-        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt=""/>PHP</div>
+        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt="">Python</div>
+        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt="">Java</div>
+        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt="">C</div>
+        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt="">R‑Script</div>
+        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt="">MySQL</div>
+        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt="">C++</div>
+        <div class="skill"><img class="icon" src="assets/icons/star.svg" alt="">PHP</div>
       </div>
     </section>
 
+    <!-- Projects -->
     <section id="projects" class="section alt reveal">
       <h2>Projects</h2>
       <div class="cards three">
         <article class="card project float">
-          <!--<img src="assets/images/project-1.png" alt="Hospital Management System" />-->
           <h3>Hospital Management System (C)</h3>
           <p>Doctor scheduling, EHR access, and inventory with robust file I/O and input validation.</p>
           <div class="stack">C • File handling • Input validation</div>
         </article>
         <article class="card project float">
-          <!--<img src="assets/images/project-2.png" alt="Procurement Order Tracking System" />-->
           <h3>Procurement Order Tracking (Java)</h3>
           <p>Role‑based dashboards with Swing, login/auth flows, file I/O for items & orders, OOP encapsulation.</p>
           <div class="stack">Java • Swing • OOP</div>
         </article>
         <article class="card project float">
-          <!--<img src="assets/images/project-3.png" alt="Airlines Reservation System" />-->
           <h3>Airlines Reservation System (Python)</h3>
           <p>Admin dashboard, flight management, search, and strict date/time validation.</p>
           <div class="stack">Python • CLI • Validation</div>
         </article>
       </div>
+
       <div class="cards one reveal" style="margin-top:16px">
         <article class="card project float">
           <h3>Airport Concurrent Simulation (Java)</h3>
@@ -114,19 +114,18 @@
       </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="section reveal">
       <h2>Contact Me</h2>
       <div class="contact">
         <a class="contact-item" href="mailto:Toibbyrn@gmail.com">
-          <img class="icon" src="assets/icons/email.svg" alt="" />
-          Email
+          <img class="icon" src="assets/icons/email.svg" alt=""> Email
         </a>
         <a class="contact-item" href="https://www.linkedin.com/in/ibrahim-mirza-b804b4304/" target="_blank" rel="noopener">
-          <img class="icon" src="assets/icons/linkedin.svg" alt="" />
-          LinkedIn
+          <img class="icon" src="assets/icons/linkedin.svg" alt=""> LinkedIn
         </a>
         <span class="contact-item">
-          <img class="icon" src="assets/icons/star.svg" alt="" />
+          <img class="icon" src="assets/icons/star.svg" alt="">
           +60 11 1440 9603 / +966 59 328 3079
         </span>
       </div>
@@ -142,7 +141,7 @@
     <p>Copyright © <span id="year"></span> Muhammad Ibrahim Mirza.</p>
   </footer>
 
-  <script src="script.js?v=8" defer></script>
-
+  <!-- Include the script ONCE -->
+  <script src="script.js?v=12" defer></script>
 </body>
 </html>
