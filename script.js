@@ -24,15 +24,25 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/***** Typewriter with mobile/reduced-motion kill-switch *****/
-let reduceMotion = false;
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) reduceMotion = true;
-if (window.innerWidth < 900) reduceMotion = true;  // phones/tablets: no typing
+// Disable typing on small screens OR if user prefers reduced motion
+let reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                || window.innerWidth < 900;
+
+function safeText(el, def = '') {
+  if (!el) return def;
+  const t1 = (el.getAttribute('data-text') || '').trim();
+  const t2 = (el.textContent || '').trim();
+  return t1 || t2 || def; // always return something
+}
 
 function typeLine(el, text, speed = 45, delay = 0) {
   return new Promise(resolve => {
     if (!el) return resolve();
+    // If no text found, do nothing visible, just resolve
+    if (!text) { el.textContent = ''; el.classList.remove('typing'); return resolve(); }
+
     if (reduceMotion) { el.textContent = text; el.classList.remove('typing'); return resolve(); }
+
     el.textContent = '';
     el.classList.add('typing');
     let i = 0;
@@ -52,17 +62,16 @@ function typeLine(el, text, speed = 45, delay = 0) {
 (async () => {
   const hello   = document.getElementById('hello');
   const nameEl  = document.getElementById('name');
-  const tagLine = document.getElementById('tagline');
+  const tagline = document.getElementById('tagline');
 
-  const t1 = (hello  ?.getAttribute('data-text') || hello ?.textContent || '').trim();
-  const t2 = (nameEl ?.getAttribute('data-text') || nameEl?.textContent || '').trim();
-  const t3 = (tagLine?.getAttribute('data-text') || tagLine?.textContent || '').trim();
+  const tHello   = safeText(hello,   "👋 Hello, I'm");
+  const tName    = safeText(nameEl,  "Muhammad Ibrahim Mirza");
+  const tTagline = safeText(tagline, "CS undergrad @ APU · Python · Java · C · R · MySQL | Interested in software engineering, algorithms & optimisation");
 
-  await typeLine(hello,  t1, 45, 200);   // Hello, I'm
-  await typeLine(nameEl, t2, 45, 150);   // Name
-  await typeLine(tagLine,t3, 45, 150);   // Tagline
+  await typeLine(hello,   tHello, 45, 200);  // Hello
+  await typeLine(nameEl,  tName,  45, 150);  // Name
+  await typeLine(tagline, tTagline,45, 150); // Tagline
 
-  // Fade in the hero image afterwards (or immediately on mobile)
   const profileImg = document.querySelector('.hero__image img');
   if (profileImg) profileImg.classList.add('visible');
 })();
