@@ -1,4 +1,4 @@
-/***** Helper: safe DOM ready *****/
+/***** Safe init *****/
 (function run() {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init, { once: true });
@@ -15,7 +15,6 @@ function init() {
     typewriterSequence();
     fadeHeroImage();
   } catch (e) {
-    // Never crash the page; log instead.
     console.error('Init error:', e);
   }
 }
@@ -56,7 +55,7 @@ function revealOnScroll() {
 
 /***** Typewriter (desktop only) *****/
 function typewriterSequence() {
-  // Kill animation on small screens or prefers-reduced-motion
+  // Disable typing on small screens or if user prefers reduced motion
   const reduceMotion =
     window.innerWidth < 900 ||
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -72,10 +71,10 @@ function typewriterSequence() {
   const tTag2  = getText(tag2,   "Interested in software engineering, algorithms & optimisation");
 
   if (reduceMotion) {
-    if (hello)  hello.textContent  = tHello;
-    if (nameEl) nameEl.textContent = tName;
-    if (tag1)   tag1.textContent   = tTag1;
-    if (tag2)   tag2.textContent   = tTag2;
+    if (hello)  { hello.textContent  = tHello;  hello.classList.add('typed'); }
+    if (nameEl) { nameEl.textContent = tName;   nameEl.classList.add('typed'); }
+    if (tag1)   { tag1.textContent   = tTag1;   tag1.classList.add('typed'); }
+    if (tag2)   { tag2.textContent   = tTag2;   tag2.classList.add('typed'); }
     return; // no typing on mobile
   }
 
@@ -99,7 +98,7 @@ function typeLine(el, text, speed, delay) {
   return new Promise(resolve => {
     if (!el || !text) return resolve();
     el.textContent = '';
-    el.classList.add('typing');
+    el.classList.add('typing');           // show caret & unhide
     let i = 0;
     setTimeout(() => {
       const timer = setInterval(() => {
@@ -107,6 +106,7 @@ function typeLine(el, text, speed, delay) {
         if (i > text.length) {
           clearInterval(timer);
           el.classList.remove('typing');
+          el.classList.add('typed');      // stay visible after typing
           resolve();
         }
       }, speed);
@@ -114,7 +114,7 @@ function typeLine(el, text, speed, delay) {
   });
 }
 
-/***** Hero image fade (won’t crash if missing) *****/
+/***** Hero image fade *****/
 function fadeHeroImage() {
   const img = document.querySelector('.hero__image img');
   if (img) img.classList.add('visible');
