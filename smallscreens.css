@@ -1,7 +1,6 @@
 /* Phones & small tablets */
 @media (max-width: 900px) {
-
-  /* --- Header stacks nicely --- */
+  /* Header stacks neatly */
   .topnav {
     padding: 10px 14px;
     flex-direction: column;
@@ -13,35 +12,28 @@
     font-size: 16px;
     line-height: 1.1;
     text-align: center;
-    display: block;
   }
-  .topnav nav {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+  .topnav nav { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
   .topnav nav a { margin-left: 0; font-size: 14px; }
 
-  /* --- Hero stacks; photo first & smaller --- */
+  /* Hero: stack; photo first; center everything */
   .hero {
     grid-template-columns: 1fr;
     gap: 16px;
     padding: 40px 16px 28px;
   }
-  .hero__image {
-    order: -1;
-    justify-content: center;
-  }
+  .hero__image { order: -1; display: flex; justify-content: center; }
   .hero__image img {
     width: 120px;
     height: 120px;
+    object-fit: cover;
+    border-radius: 50%;     /* keep perfect circle (no oval) */
     border-width: 2px;
+    max-width: 100%;
   }
 
-  /* --- Center hero text and make sizes fit --- */
   .hero__content { text-align: center; }
-  .hero__content .wave { margin-bottom: 4px; }
+  .hero__content .wave { margin-bottom: 6px; }
   .hero__content h1 {
     font-size: 30px;
     line-height: 1.15;
@@ -50,41 +42,17 @@
   .tagline {
     font-size: 14px;
     line-height: 1.35;
-    margin-bottom: 12px;
-  }
-  .tagline br {
-  display: none; /* hide break on large screens */
-}
-
-@media (max-width: 900px) {
-  .tagline br {
-    display: inline; /* force break on mobile */
-  }
-}
-
-
-  /* Buttons wrap & center */
-  .cta {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
+    margin-bottom: 8px;
   }
 
-  /* Cards go single column with comfy spacing */
-  .cards.two,
-  .cards.three { grid-template-columns: 1fr; }
+  .cta { justify-content: center; flex-wrap: wrap; gap: 10px; }
+
+  /* Cards go single column and shrink padding */
+  .cards.two, .cards.three { grid-template-columns: 1fr; }
   .section { padding: 28px 16px; }
 
-  /* Hide typewriter caret on mobile (you disabled typing in JS already) */
-  .typewriter::after { display: none !important; }
-}
-@media (max-width: 768px) {
-  body {
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .hero__image img {
-    max-width: 100%;
-    height: auto;
-  }
+  /* Hard guard against horizontal bounce/scroll */
+  html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+  img, video { max-width: 100%; height: auto; }
+  .topnav, .section, .hero, .cards, .contact, .footer { max-width: 100%; box-sizing: border-box; }
 }
