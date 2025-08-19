@@ -1,191 +1,98 @@
 /* Phones & small tablets */
-@media (max-width: 900px){
-  /* Kill horizontal overflow + respect notches */
-  html,body{
-    width:100%;max-width:100%;overflow-x:hidden;
-    -webkit-text-size-adjust:100%;
-    -webkit-overflow-scrolling:touch;
-  }
-
-  /* Header stacks neatly */
-  .topnav{
-    padding:10px 14px;
-    flex-direction:column;align-items:center;gap:6px;
-    width:100%;box-sizing:border-box;
-  }
-  .topnav .brand a{font-weight:700;font-size:16px;line-height:1.1;text-align:center}
-  .topnav nav{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;max-width:100%}
-  .topnav nav a{margin-left:0;font-size:14px}
-
-  /* Hero: stack; photo first; center everything */
-  .hero{
-    display:grid;grid-template-columns:1fr;gap:16px;
-    padding:40px 16px 28px;margin:0 auto;width:100%;max-width:100%;box-sizing:border-box
-  }
-  .hero__image{order:-1;display:flex;justify-content:center}
-  .hero__image img{
-    width:120px;height:120px;max-width:100%;object-fit:cover;border-radius:50%;border-width:2px
-  }
-
-  .hero__content{text-align:center}
-  .hero__content .wave{margin-bottom:6px}
-  .hero__content h1{font-size:30px;line-height:1.15;margin:0 0 8px}
-  .tagline{font-size:14px;line-height:1.35;margin-bottom:8px}
-
-  .cta{justify-content:center;flex-wrap:wrap;gap:10px}
-
-  /* Cards single column + lighter padding */
-  .cards.two,.cards.three{grid-template-columns:1fr}
-  .section{padding:28px 16px}
-
-  /* Make sure big wrappers never exceed the viewport */
-  .topnav,.hero,.section,.footer{max-width:100%;box-sizing:border-box}
-  img,video{max-width:100%;height:auto}
-
-  /* Caret hidden on mobile (no typing animation) */
-  .typewriter::after{display:none}
-}
-/* --- iOS Safari overflow + wrap fixes (add at the END) --- */
 @media (max-width: 900px) {
-  /* 1) Allow the typed lines to wrap on small screens */
-  .typewriter { 
-    white-space: normal;              /* was nowrap on desktop */
-  }
-  .hero__content h1 {
-    overflow-wrap: anywhere;          /* force wrap if needed */
-    word-break: break-word;
-    -webkit-hyphens: auto;
-            hyphens: auto;
-  }
-  .tagline {
-    overflow-wrap: anywhere;
-    word-break: break-word;
-  }
 
-  /* 2) Kill any horizontal spill and respect the notch */
+  /* 0) Absolute must: never allow horizontal overflow */
   html, body {
-    width: 100%;
     max-width: 100%;
     overflow-x: hidden;
+    /* leave vertical scrolling completely default */
     -webkit-text-size-adjust: 100%;
-    -webkit-overflow-scrolling: touch;
   }
-  .topnav, .hero, .section, .footer {
+
+  /* 1) Header: NOT sticky on iOS to avoid scroll traps */
+  .topnav {
+    position: static;
+    padding: 10px 14px;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
     width: 100%;
-    max-width: 100%;
     box-sizing: border-box;
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
   }
-
-  /* 3) Brand text can wrap; never push layout wider */
-  .topnav .brand a { 
-    white-space: normal; 
-    overflow-wrap: anywhere; 
-  }
-
-  /* 4) Images never exceed viewport */
-  img, video { max-width: 100%; height: auto; }
-  .hero__image img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; }
-}
-@media (max-width: 900px) {
-  /* 1) Prevent sideways panning / bounce */
-  html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    overscroll-behavior-x: none;
-    touch-action: pan-y;
-    -webkit-text-size-adjust: 100%;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* 2) Let long lines wrap (desktop typewriter uses nowrap) */
-  .typewriter { white-space: normal; }
-  .hero__content h1,
-  .tagline,
-  .topnav .brand a { 
+  .topnav .brand a {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.1;
+    text-align: center;
+    white-space: normal;           /* allow wrap */
     overflow-wrap: anywhere;
-    word-break: break-word;
-    white-space: normal;
   }
-
-  /* 3) Use lvh locally (hero fills screen nicely but page still scrolls) */
-  .hero {
-    min-height: 90lvh;   /* fills most of the viewport height without forcing body to 100lvh */
-  }
-
-  /* 4) Make sure big wrappers never exceed viewport width */
-  .topnav, .hero, .section, .footer {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
-  }
-
-  /* 5) Images never push wider */
-  img, video { max-width: 100%; height: auto; }
-  .hero__image img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; }
-
-  /* 6) Disable hover grow on mobile to avoid accidental overflow */
-  .card.project:hover { transform: none; box-shadow: var(--shadow); }
-}
-
-/* Optional, global (safe): border-box reset */
-:root { box-sizing: border-box; }
-*, *::before, *::after { box-sizing: inherit; }
-/* === iOS bounce & hero spacing fix (mobile) === */
-@media (max-width: 900px) {
-  /* 1) Disable sticky header on phones (prevents Safari scroll trap) */
-  .topnav { position: static; }
-
-  /* 2) Tighter hero layout + smaller photo (no isolation) */
-  .hero {
-    grid-template-columns: 1fr;   /* stack */
+  .topnav nav {
+    display: flex;
     gap: 12px;
-    padding: 16px 16px 20px;      /* less vertical padding */
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+  }
+  .topnav nav a { margin-left: 0; font-size: 14px; }
+
+  /* 2) Hero: stack + tighter spacing + smaller photo */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 20px 16px 18px;       /* keep hero compact */
     margin: 0 auto;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
   }
-  .hero__image { order: -1; display: flex; justify-content: center; margin-top: 4px; }
-  .hero__image img { width: 110px; height: 110px; object-fit: cover; border-radius: 50%; }
+  .hero__image {
+    order: -1;
+    display: flex;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .hero__image img {
+    width: 110px;
+    height: 110px;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 
   .hero__content { text-align: center; }
-  .hero__content h1 { font-size: 28px; line-height: 1.2; margin: 0 0 6px; }
-  .tagline { font-size: 14px; line-height: 1.35; margin: 0 0 10px; }
+  .hero__content .wave { margin-bottom: 6px; }
 
-  /* 3) Make sure long lines wrap (no hidden width) */
+  /* 3) Allow long lines to wrap (desktop typewriter uses nowrap) */
   .typewriter,
   .hero__content h1,
-  .tagline,
-  .topnav .brand a,
-  .topnav nav { 
+  .tagline {
     white-space: normal;
     overflow-wrap: anywhere;
     word-break: break-word;
   }
 
-  /* 4) Absolute guard against sideways overflow on iOS */
-  html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    overscroll-behavior-x: none;
-    touch-action: pan-y;
-    -webkit-text-size-adjust: 100%;
-    -webkit-overflow-scrolling: touch;
-  }
+  .hero__content h1 { font-size: 28px; line-height: 1.22; margin: 0 0 6px; }
+  .tagline { font-size: 14px; line-height: 1.35; margin: 0 0 10px; }
+
+  /* 4) Center CTAs */
+  .cta { justify-content: center; flex-wrap: wrap; gap: 10px; }
+
+  /* 5) Single-column cards + lighter padding */
+  .cards.two, .cards.three { grid-template-columns: 1fr; }
+  .section { padding: 26px 16px; }
+
+  /* 6) Big wrappers never exceed the viewport width */
   .topnav, .hero, .section, .footer {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
   }
 
-  /* 5) Don’t let hover grow push width on touch devices */
+  /* 7) Images never push width */
+  img, video { max-width: 100%; height: auto; }
+
+  /* 8) Disable hover-grow on touch to avoid tiny width spikes */
   .card.project:hover { transform: none; box-shadow: var(--shadow); }
 }
