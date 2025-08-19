@@ -52,6 +52,16 @@
     line-height: 1.35;
     margin-bottom: 12px;
   }
+  .tagline br {
+  display: none; /* hide break on large screens */
+}
+
+@media (max-width: 900px) {
+  .tagline br {
+    display: inline; /* force break on mobile */
+  }
+}
+
 
   /* Buttons wrap & center */
   .cta {
