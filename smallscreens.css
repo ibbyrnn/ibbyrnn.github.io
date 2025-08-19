@@ -78,3 +78,13 @@
   /* Hide typewriter caret on mobile (you disabled typing in JS already) */
   .typewriter::after { display: none !important; }
 }
+@media (max-width: 768px) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .hero__image img {
+    max-width: 100%;
+    height: auto;
+  }
+}
