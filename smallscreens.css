@@ -135,3 +135,57 @@
 /* Optional, global (safe): border-box reset */
 :root { box-sizing: border-box; }
 *, *::before, *::after { box-sizing: inherit; }
+/* === iOS bounce & hero spacing fix (mobile) === */
+@media (max-width: 900px) {
+  /* 1) Disable sticky header on phones (prevents Safari scroll trap) */
+  .topnav { position: static; }
+
+  /* 2) Tighter hero layout + smaller photo (no isolation) */
+  .hero {
+    grid-template-columns: 1fr;   /* stack */
+    gap: 12px;
+    padding: 16px 16px 20px;      /* less vertical padding */
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .hero__image { order: -1; display: flex; justify-content: center; margin-top: 4px; }
+  .hero__image img { width: 110px; height: 110px; object-fit: cover; border-radius: 50%; }
+
+  .hero__content { text-align: center; }
+  .hero__content h1 { font-size: 28px; line-height: 1.2; margin: 0 0 6px; }
+  .tagline { font-size: 14px; line-height: 1.35; margin: 0 0 10px; }
+
+  /* 3) Make sure long lines wrap (no hidden width) */
+  .typewriter,
+  .hero__content h1,
+  .tagline,
+  .topnav .brand a,
+  .topnav nav { 
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* 4) Absolute guard against sideways overflow on iOS */
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+    touch-action: pan-y;
+    -webkit-text-size-adjust: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+  .topnav, .hero, .section, .footer {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  /* 5) Don’t let hover grow push width on touch devices */
+  .card.project:hover { transform: none; box-shadow: var(--shadow); }
+}
