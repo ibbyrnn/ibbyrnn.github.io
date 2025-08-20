@@ -96,3 +96,47 @@
   /* 8) Disable hover-grow on touch to avoid tiny width spikes */
   .card.project:hover { transform: none; box-shadow: var(--shadow); }
 }
+/* --- Mobile performance & bounce patch --- */
+@media (max-width: 900px) {
+  /* A) Non‑sticky, no blur header (blur is expensive on mobile) */
+  .topnav {
+    position: static;
+    background: #fff;                /* solid instead of translucent */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* B) Simpler reveal on mobile (opacity only, no translate) */
+  .reveal { opacity: 1; transform: none; }
+  .reveal-visible { opacity: 1; transform: none; transition: opacity .25s ease; }
+
+  /* C) Disable floating animation + soften big shadows near hero */
+  .float { animation: none; }
+  .hero__image img { box-shadow: 0 4px 12px rgba(31,37,68,.12); }
+
+  /* D) Ensure long lines wrap, never widen the page */
+  .typewriter, .hero__content h1, .tagline,
+  .topnav .brand a, .topnav nav {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* E) Absolute guard against sideways overflow */
+  html, body { max-width:100%; overflow-x:hidden; }
+  img, video { max-width:100%; height:auto; }
+
+  /* F) Keep hero compact so it doesn’t feel “isolated” */
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 20px 16px 18px;
+  }
+  .hero__image { order:-1; display:flex; justify-content:center; }
+  .hero__image img { width:110px; height:110px; border-radius:50%; object-fit:cover; }
+  .hero__content { text-align:center; }
+  .hero__content h1 { font-size:28px; line-height:1.22; margin:0 0 6px; }
+  .tagline { font-size:14px; line-height:1.35; margin:0 0 10px; }
+  .cta { justify-content:center; gap:10px; }
+}
