@@ -33,20 +33,35 @@ function smoothScroll(){
   });
 }
 
-/***** Reveal on scroll *****/
-function revealOnScroll(){
-  const els=document.querySelectorAll('.reveal');
-  if(!els.length||!('IntersectionObserver' in window)) return;
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
+function revealOnScroll() {
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+
+  // On phones/tablets, apply reveals immediately (no observer/translate)
+  const isMobile = window.innerWidth < 900;
+  if (isMobile) {
+    els.forEach(el => el.classList.add('reveal-visible'));
+    return;
+  }
+
+  // Desktop: use IntersectionObserver (with transform animation)
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('reveal-visible'));
+    return;
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
         entry.target.classList.add('reveal-visible');
         io.unobserve(entry.target);
       }
     });
-  },{threshold:.12});
-  els.forEach(el=>io.observe(el));
+  }, { threshold: 0.12 });
+
+  els.forEach(el => io.observe(el));
 }
+
 
 /***** Typewriter (desktop only) *****/
 function typewriterSequence(){
