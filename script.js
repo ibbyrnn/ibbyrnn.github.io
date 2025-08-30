@@ -43,7 +43,7 @@ function revealOnScroll() {
     els.forEach(el => el.classList.add('reveal-visible'));
     return;
   }
-
+/**/
   // Desktop: use IntersectionObserver (with transform animation)
   if (!('IntersectionObserver' in window)) {
     els.forEach(el => el.classList.add('reveal-visible'));
@@ -74,7 +74,7 @@ function typewriterSequence(){
   const tag1   = document.getElementById('tag1');
   const tag2   = document.getElementById('tag2');
 
-  const tHello = getText(hello,  "👋 Hello, I'm");
+  const tHello = getText(hello,  "Hello, I'm");
   const tName  = getText(nameEl, "Muhammad Ibrahim Mirza");
   const tTag1  = getText(tag1,   "CS undergrad @ APU · Python · Java · C · R · MySQL");
   const tTag2  = getText(tag2,   "Interested in software engineering, Algorithms & optimisation");
